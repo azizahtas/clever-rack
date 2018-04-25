@@ -10,7 +10,8 @@ var config = require("./config");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var storeRouter = require('./routes/storeController');
-var rackRouter = require('./routes/rackController');
+var shelfRouter = require('./routes/shelfController');
+var itemRouter = require('./routes/itemsController');
 
 var Port = process.env.PORT || config.port;
 
@@ -39,7 +40,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/stores', storeRouter);
-app.use('/rack', rackRouter);
+app.use('/shelves', shelfRouter);
+app.use('/items', itemRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

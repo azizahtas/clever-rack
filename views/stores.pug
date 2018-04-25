@@ -1,5 +1,69 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  script.
+    $(document).ready(function() {
+      $("#info").click(function() { $("#details").toggle(100); });
+    });
+  nav.navbar.navbar-toggleable-md.navbar-fixed-top.navbar-inverse.bg-inverse
+    button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarTop', aria-controls='navbarTop', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    a.navbar-brand(href='https://clever-rack.herokuapp.com/stores')
+      img(src='./SmartRack™ - Stores_files/logo-red.svg', alt='SmartRack.io')
+    #navbarTop.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          a.nav-link.active(href='https://clever-rack.herokuapp.com/stores')
+            | Stores 
+            span.sr-only (current)
+        li.nav-item
+          a.nav-link(href='https://clever-rack.herokuapp.com/audience.html') Audience 
+        li.nav-item
+          a.nav-link(href='https://clever-rack.herokuapp.com/ads.html') Ads
+  .container
+    .starter-template
+      h1 Stores
+      p.lead
+        | All stores are listed below.
+        a#info
+          i.fa.fa-question-circle(style='font-size:24px')
+      span#details(style='display:none;')
+        p For more information on a store, click the corresponding icon:
+        a.btn.btn-outline-primary.btn-sm(href='https://clever-rack.herokuapp.com/stores', role='button', aria-pressed='true')
+          i.fa.fa-area-chart
+        |  Shelves - Products and estimated inventory levels
+        br
+        a.btn.btn-outline-primary.btn-sm(href='https://clever-rack.herokuapp.com/stores', role='button', aria-pressed='true')
+          i.fa.fa-users
+        |  Audience - Foot traffic by day, last 30 days
+        br
+      table#storesTable.table
+        thead
+          tr
+            th VPN / Rack Num
+            th Status
+            th.sort(style='cursor:pointer;', data-sort='sort-location', data-key='location.address')
+              | Address
+            th.sort(style='cursor:pointer;', data-sort='sort-display', data-key='name') Name
+            th Actions
+        tbody
+          tr.display.table-success
+            td
+              | 01JC
+              br
+              | 000004
+            td Active
+            td
+              a(href='')
+                | Heritage Tower
+                br
+                | 25 W Michigan Ave, Battle Creek, MI 49017
+                br
+                |  USA
+            td
+              a(href='#') Kellogg&apos;s HQ Cafeteria
+            td(nowrap='')
+              a.btn.btn-outline-primary.btn-sm(href='https://clever-rack.herokuapp.com/shelves', role='button', aria-pressed='true')
+                i.fa.fa-area-chart
+              a.btn.btn-outline-primary.btn-sm(href='#', role='button', aria-pressed='true')
+                i.fa.fa-users
