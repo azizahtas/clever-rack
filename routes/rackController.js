@@ -1,6 +1,6 @@
 var express = require('express');
 var RackRouter = express.Router();
-var Rack = require('../models/Rack');
+var Rack = require('../models/rack');
 
 RackRouter.use('*',function (req, res, next) {
     console.log('Inside Rack Controller!');
