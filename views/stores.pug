@@ -47,23 +47,14 @@ block content
             th.sort(style='cursor:pointer;', data-sort='sort-display', data-key='name') Name
             th Actions
         tbody
-          tr.display.table-success
-            td
-              | 01JC
-              br
-              | 000004
-            td Active
-            td
-              a(href='')
-                | Heritage Tower
-                br
-                | 25 W Michigan Ave, Battle Creek, MI 49017
-                br
-                |  USA
-            td
-              a(href='#') Kellogg&apos;s HQ Cafeteria
+          each store, i in stores
+            tr.display.table-success
+            td #{store.racknum}
+            td #{store.status?"Active":"Inactie"}
+            td #{store.address}
+            td #{store.name}
             td(nowrap='')
-              a.btn.btn-outline-primary.btn-sm(href='https://clever-rack.herokuapp.com/shelves', role='button', aria-pressed='true')
+              a.btn.btn-outline-primary.btn-sm(href='https://clever-rack.herokuapp.com/shelves/'+ store.racknum, role='button', aria-pressed='true')
                 i.fa.fa-area-chart
               a.btn.btn-outline-primary.btn-sm(href='#', role='button', aria-pressed='true')
                 i.fa.fa-users

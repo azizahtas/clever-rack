@@ -1,3 +1,4 @@
+//taskkill /F /IM node.exe Run this as admin To kill all node Processes
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

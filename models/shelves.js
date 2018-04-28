@@ -11,3 +11,7 @@ var Shelf = module.exports = mongoose.model('Shelf', ShelfSchema, 'shelves');
 module.exports.getAllShelves = function (callback) {
     Shelf.find({}, { __v: 0 }, callback);
 };
+
+module.exports.getShelvesByRackId = function(num,callback) {
+    Shelf.find({racknum:num}, callback);
+};
